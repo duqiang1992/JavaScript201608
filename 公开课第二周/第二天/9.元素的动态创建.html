@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //动态创建一个div；但是还没添加到页面上
+    var oDiv=document.createElement('div');
+    var oDiv2=document.createElement('div');
+    var aP=oDiv.getElementsByTagName('p');
+    //通过.改元素的属性
+    oDiv.id='div1';
+    //通过innerHTML属性改元素的内容
+    oDiv.innerHTML='<p>我是p1元素</p><p>我是p2元素</p><p>我是p3元素</p>';
+    oDiv2.id='div2';
+    //把oDiv2插入到第二个p的前面；
+    oDiv.insertBefore(oDiv2,aP[1]);
+    //添加到页面上；
+    //把oDiv2动态插入到oDiv这个容器的末尾；
+    //oDiv.appendChild(oDiv2);
+    //把oDiv这个元素，动态插入到body这个容器的末尾
+    document.body.appendChild(oDiv);
+
+
+</script>
+</body>
+</html>

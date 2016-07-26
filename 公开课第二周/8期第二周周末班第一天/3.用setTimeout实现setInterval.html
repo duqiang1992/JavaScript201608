@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //递归：函数自己调用自己
+    var n=0;
+    function fn(){
+        n++;//1 2 3....
+        alert(n)
+        if(n===5){//当n===5的时候，结束定时器，同时，阻断程序执行；
+           // console.log(n);
+            clearTimeout(timer);//结束定时器
+            return;//阻断程序执行；
+        }
+        var timer=setTimeout(fn,1000);//开启定时器；
+    }
+    fn();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

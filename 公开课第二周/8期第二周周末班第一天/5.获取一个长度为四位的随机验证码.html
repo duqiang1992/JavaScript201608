@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //需求：获取一个长度为4位的不重复的随机验证码；
+    var strCode='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var str='';
+    //只要字符串的长度小于4，满足循环条件
+    while(str.length<4){
+        var rnd=Math.round(Math.random()*61);//拿随机数的目的，把数字做为索引找对应的内容；
+        //字符串中如果没有该字符，才给字符串里添加
+        if(str.indexOf(strCode.charAt(rnd))===-1){
+            str+=strCode.charAt(rnd);
+        }
+    }
+    document.write(str);
+</script>
+</body>
+</html>

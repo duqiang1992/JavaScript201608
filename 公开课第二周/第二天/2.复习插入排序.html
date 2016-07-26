@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,32,2,9,4];
+    function insertSort(ary){
+        //先给left保存一张牌在数组中；
+        var left=ary.splice(0,1);
+        //拿数组中的每一项跟left数组中的每一项进行比较;从后往前的比较
+        for(var i=0; i<ary.length; i++){
+            var cur=ary[i];
+            for(var j=left.length-1; j>=0;){
+                if(cur<left[j]){
+                    j--;
+                    if(j===-1){
+                        left.unshift(cur);
+                    }
+                }else{
+                    left.splice(j+1,0,cur);
+                    break;//切记，每次插入完成都要结束小循环
+                }
+            }
+        }
+        return left;
+    }
+    console.log(insertSort(ary));
+</script>
+</body>
+</html>

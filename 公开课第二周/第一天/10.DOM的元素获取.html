@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div" class="div"></div>
+<input type="text" name="t1"/>
+<input type="text" name="t1" class="t2"/>
+<script>
+   // var oDiv=document.getElementById('div');
+   //var oDiv=document.getElementsByTagName('div')[0];
+   //var oDiv=document.getElementsByClassName('div')[0];
+   //var oTxt=document.getElementsByName('t1')[1];//主要用于表单元素，如果获取非表单元素，在IE下有兼容问题；
+   /*document.documentElement// document文档
+   document.body  //body*/
+   //可视区的宽和高
+    /*var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+   var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;*/
+   //querySelector()；querySelectorAll()  他们多用来开发移动端
+   // var oDiv=document.querySelector('#div');
+   // var oDiv=document.querySelector('.div');
+   var aInput=document.querySelectorAll('input')[1];
+    console.log(aInput)
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

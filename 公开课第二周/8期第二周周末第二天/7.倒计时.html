@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            font-size: 50px;
+        }
+        span{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="div">距离下课时间还有 <span>00:00:00</span></div>
+<script>
+    var oSpan=document.getElementsByTagName('span')[0];
+    function toDou(n){
+        /*if(n>=0 && n<10){
+            return '0'+n; //返回的是字符串
+        }else{
+            return ''+n;  //字符串
+        }*/
+        return n>=0 && n<10?'0'+n:''+n;
+
+    }
+    //倒计时：未来的时间-现在的时间=值 不断的减少；
+    //重点：秒转换    32904872984379857295/1000
+    function countDown(){
+        var oDate=new Date();
+        //console.log(oDate.getTime());//现在时间距离1970年1月1日 00:00:00的毫秒数； 格林尼治时间
+        var newDate=new Date('2016/7/20 17:00:00');
+        //求出的就是未来时间距离现在时间的秒数；
+        var s=Math.floor((newDate.getTime()-oDate.getTime())/1000);
+        if(s<=0){
+            s=0;
+            clearInterval(timer);
+        }
+        //24小时*60分*60秒=86400秒;
+        var d=Math.floor(s/86400);//整数求得是天；
+        s%=86400;//剩下的秒数  %：就是用来取余的；
+        var h=Math.floor(s/3600);//时间；
+        s%=3600; //剩下的秒数
+        var m=Math.floor(s/60);
+        s%=60;
+        oSpan.innerHTML=toDou(d)+'天'+toDou(h)+':'+toDou(m)+':'+toDou(s);
+    }
+    countDown();
+    var timer=setInterval(countDown,1000)
+
+
+</script>
+</body>
+</html>

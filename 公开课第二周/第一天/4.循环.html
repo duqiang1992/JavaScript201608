@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1)定义 2）条件 3）语句 4）自增；
+    /*for(var i=0; i<3; i++){
+        alert(i)
+    }*/
+    //while循环，可以写的跟for循环一个，包含4步
+    /*var i=0;//1.定义
+    while(i<3){//2.条件
+        alert(i);//3.语句
+        i++;//4.自增；
+    }*/
+    //do...while循环，无论条件是否成立，都会先执行一次，以后再根据条件判断，决定是否再执行
+    var i=12;
+    do{
+        alert(i)
+        i++;//如果没有自增，会出现死循环；
+    }while(i<3)
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function add(){//函数自带的参数机制：arguments
+        var total=0;
+        for(var i=0; i<arguments.length; i++){
+            if(!isNaN(arguments[i])){//进行有效数字的过滤
+                total+=Number(arguments[i]); //为了防止字符串拼接；
+            }
+        }
+        return total;
+    }
+    console.log(add(1,2,'3','3px'));
+</script>
+</body>
+</html>

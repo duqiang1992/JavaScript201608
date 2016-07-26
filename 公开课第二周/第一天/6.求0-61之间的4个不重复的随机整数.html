@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //求0-61之间4个不重复的随机整数；
+    //给四次机会，去拿4个不重复的数字，如果重复了，此次不算，继续开始拿。
+    //var ary=[23,21,20];
+    /*ary.push(123);//给数组末尾添加一项，push
+    ary.pop();//删除数组最后一项；
+    // ary.shift();//移出数组第一项；
+    ary.unshift('789')*/
+    //方法：就是用来做事情的；
+    //var res=ary.splice(0,2);//ary.splice(n,m):从索引n开始，删除m个;
+   // console.log(res);//[23,21]:splice会影响原有数组，被删除的内容，以一个新数组的形式返回；
+    //var res=ary.splice(1,0,'zhufeng','peixun');//[23,'zhufeng','peixun',21,20]
+    //splice(n,0,x):从索引n开始，删除0个，把新内容x添加到索引n的前面；添加阶段，splice的返回值是空数组；
+   // var res=ary.splice(1,2,'zhufeng','peixun');
+    //ary.splice(n,m,x):从索引n开始，删除m个，替换为x的新内容；返回值：被删除的内容，以一个新数组的形式返回；
+    /*console.log(res)
+    console.log(ary)//[20]*/
+
+    //alert(ary.indexOf('lallaa'))
+    //思路1：for循环
+    /*var ary=[];
+    for(var i=0; i<4; i++){//0
+        // 求0-61之间的随机整数，包含0，和 61；
+        var rnd=Math.round(Math.random()*61);
+        //说明数组中已经存在这个数字，重复了；
+        if(ary.indexOf(rnd) !==-1){//重复
+            i--;//只要重复，此次就不算，下次继续走；
+        }else{//不重复
+            ary.push(rnd);
+        }
+    }*/
+    //思路2：while循环
+    var ary=[];
+    //当ary.length==4就不进while循环；
+    while(ary.length<4){
+        var rnd=Math.round(Math.random()*61);
+        if(ary.indexOf(rnd)===-1){//数组中没有的这个数字的时候，才给数组里放；
+            ary.push(rnd);
+        }
+    }
+    document.write(ary);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+    <script>
+        //等页面所有元素都加载完成，再开始执行JS代码；
+        /*var bOk=confirm('你是前端工程师吗？');
+         if(bOk){
+         alert('可以开始答题了')
+         }else{
+         alert('你回家吧，这里跟你没关系')
+         }*/
+        window.onload=function(){
+            var oDiv=document.getElementById('div');
+            var oP=document.getElementsByTagName('p')[0];
+            //console.log(oP);
+            console.dir(oP);
+            //alert(oDiv.innerHTML)//获取元素的内容
+            oDiv.innerHTML='珠峰培训珠峰培训珠峰培训';
+            oP.innerHTML='前端工程师前端开发';
+            //document.write('几天下雨了，六期还去爬山了')
+        }
+    </script>
+</head>
+<body>
+<div id="div">1234455</div>
+<p id="p1" class="p123"></p>
+</body>
+</html>

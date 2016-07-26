@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div"  style="width:100px;"></div>
+<script>
+    var oDiv=document.getElementById('div');
+    console.dir(oDiv)
+    /*var oDiv=document.getElementsByTagName('div')[0];
+    var oDiv=document.querySelector('div');
+    var oDiv=document.querySelector('#div');
+    var oDiv=document.querySelectorAll('div')[0];
+    var oDiv=document.querySelectorAll('#div')[0];*/
+    //什么时候能拿到元素身上的属性：系统自带的元素的属性都能拿到
+    //不是系统自带的属性，叫做自定义属性（我们自己给他定义的属性）
+    //区别1：
+    /*alert(oDiv.index)//undefined
+    alert(oDiv.getAttribute('index'));//通过getAttribute可以拿到元素的自定义属性；*/
+    /*
+    * 为何不能直接带元素身上添加自定义属性：
+    * 因为：浏览器在加载HTML页面的时候，会干掉不是系统自带的属性；
+    * 如何给元素添加上自定义属性呢？
+    * 等HTML页面加载完成，我们可以在JS中对元素添加自定义属性，因为浏览器在加载过程中只会检查一次，在JS执行时，浏览器已经检查完了；
+    * */
+    //区别2：通过.设置的自定义属性，在元素上看不到，但是通过setAttribute设置自定义属性可以看到；
+    /*oDiv.index=123;
+    alert(oDiv.index);*/
+    /*oDiv.setAttribute('index',123)*/
+    //以下是错误的写法：因为不能把.和attribute混合使用；
+    /*oDiv.index=123;
+    alert(oDiv.getAttribute('index'))*/
+    /*oDiv.setAttribute('index',123)
+    alert(oDiv.index);*/
+
+
+</script>
+</body>
+</html>

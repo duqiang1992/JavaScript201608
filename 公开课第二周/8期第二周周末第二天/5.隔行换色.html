@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            height: 40px;
+            list-style: none;
+        }
+        .bg0{
+            background:red;
+        }
+        .bg1{
+            background: green;
+        }
+        .pink{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+   // var oldColor=null;
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].className='bg'+i%2;//隔行换色
+        aLi[i].color=aLi[i].className;
+        //以下两步解决移入移出的问题
+        aLi[i].onmouseover=function(){
+            //在改变背景色之前，可以先存储以前的颜色
+            //oldColor=this.className;
+            this.className='pink';
+        };
+        aLi[i].onmouseout=function(){
+            this.className=this.color;
+        };
+        //点击弹出索引值+1；
+        //思路1：自定义属性
+        /*aLi[i].index=i;
+        aLi[i].onclick=function(){
+            alert(this.index+1)
+        }*/
+        //思路2：闭包
+        (function(index){
+            aLi[index].onclick=function(){
+                alert(index+1)
+            }
+        })(i);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 450px;
+            height: 200px;
+        }
+        .box input{
+            width: 150px;
+            float: left;
+            height: 40px;
+        }
+        .box input.on{
+            background: lightblue;
+        }
+        .box div{
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: lightblue;
+        }
+        .box div.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <input type="button" value="按钮1" class="on"/>
+    <input type="button" value="按钮2"/>
+    <input type="button" value="按钮3"/>
+
+    <div class="show">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+<div class="box" id="box2">
+    <input type="button" value="按钮1" class="on"/>
+    <input type="button" value="按钮2"/>
+    <input type="button" value="按钮3"/>
+
+    <div class="show">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+<script>
+    tab('box');
+    tab('box2');
+    function tab(id){
+        var oBox=document.getElementById(id);
+        var aBtn=oBox.getElementsByTagName('input');
+        var aDiv=oBox.getElementsByTagName('div');
+        //思路1：自定义属性解除循环绑定事件的问题；
+        /*for(var i=0; i<aBtn.length; i++){
+         aBtn[i].index=i;
+         //当每一个按钮发生点击的时候，让所有的按钮都变灭，让当前这个按钮点亮；
+         aBtn[i].onclick=function(){
+         for(var i=0; i<aBtn.length; i++){
+         aBtn[i].className='';
+         aDiv[i].className='';
+         }
+         this.className='on';
+         aDiv[this.index].className='show';
+         };
+         //同时，让所有的div都隐藏，让当前这个按钮对应的div显示；
+         }*/
+        //思路2：闭包解除循环绑定事件的问题；
+        for(var i=0; i<aBtn.length; i++){
+            (function (index){//每一个形参都是私有变量；
+                aBtn[index].onclick=function(){
+                    for(var i=0; i<aBtn.length; i++){
+                        aBtn[i].className='';
+                        aDiv[i].className='';
+                    }
+                    this.className='on';
+                    aDiv[index].className='show';
+                }
+            })(i)
+        }
+    }
+
+</script>
+</body>
+</html>

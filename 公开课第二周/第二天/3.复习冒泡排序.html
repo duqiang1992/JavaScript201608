@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,32,2,9,4];
+    var ary2=[87,2,4,56,1]
+    function bubbleSort(ary){
+        for(var i=0; i<ary.length; i++){//循环的是轮数
+            for(var j=0; j<ary.length-i-1; j++){
+                //每次都是当前项跟后一项进行比较
+                if(ary[j]>ary[j+1]){
+                    var tmp=ary[j+1];
+                    ary[j+1]=ary[j];
+                    ary[j]=tmp;
+                }
+            }
+        }
+        return ary;
+    }
+    console.log(bubbleSort(ary2));
+</script>
+</body>
+</html>

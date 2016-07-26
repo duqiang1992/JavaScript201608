@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    //prev:找当前元素的上一个哥哥元素节点；
+    console.log(prev(aLi[2]).innerHTML)
+    function prev(curEle){//curEle形参
+        //兼容高级浏览器；previousElementSibling：直接拿到上一个哥哥元素节点；
+        if(curEle.previousElementSibling){
+            return curEle.previousElementSibling;
+        }
+        //处理低级浏览器的兼容问题
+        var pre=curEle.previousSibling;//获取上一个哥哥节点；
+        //上一个节点存在，并且不是元素节点；才会继续往上找；
+        while(pre && pre.nodeType !== 1){
+            pre=pre.previousSibling;
+        }
+        return pre;
+    }
+</script>
+</body>
+</html>

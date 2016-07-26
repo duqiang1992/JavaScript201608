@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var oDiv=document.getElementsByTagName('div')[0];
+    var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+    var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+    var l=(clientWidth-200)/2;
+    var t=(clientHeight-200)/2;
+    //console.log(top123)
+    oDiv.style.left=l+'px';
+    oDiv.style.top=t+'px';
+</script>
+</body>
+</html>

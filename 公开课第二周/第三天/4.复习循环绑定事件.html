@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<script>
+    //循环绑定事件：点击每个按钮弹出对应的索引；
+    //自定义属性循环绑定事件；
+    var aBtn=document.getElementsByTagName('input');
+     /*for(var i=0; i<aBtn.length; i++){
+        aBtn[i].index=i;
+        aBtn[i].onclick=function(){
+            //注意：私有的事件中，i值都会出问题；
+            alert(this.index)
+        }
+    }*/
+    for(var i=0; i<aBtn.length; i++){//闭包实现循环绑定事件
+        //每个正确的i值，都被保存在闭包中的私有变量index上；
+        (function(index){//形参：index
+            aBtn[index].onclick=function(){
+                alert(index);
+            }
+        })(i);//实参i;
+    }
+</script>
+</body>
+</html>

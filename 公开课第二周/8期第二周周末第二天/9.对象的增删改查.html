@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var obj={name:'zhufeng',age:8};
+    obj.name='123';//更改和增加：增加的时候如果对象中已经有该属性名，属于更改，如果没有，才属于增加；
+    obj.name=null;//假删除
+    delete  obj.name;//真删除
+    //对象的属性名如果为数字，对象会按照数字的先后循序，打印出属性名和属性值：
+    console.log(obj)
+</script>
+</body>
+</html>

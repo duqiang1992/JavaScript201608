@@ -1,0 +1,127 @@
+1.数组中常用的方法
+1）增加，删除和替换
+pop() 返回值：被删除的内容
+push() 返回值：新数组的长度
+shift()
+unshift()
+splice()
+    splice(n,m)从索引n开始，删除m个；被删除的内容，以一个新数组的形式返回；
+    splice(n,0,x)添加：从索引n开始，删除0个，把新内容添加到索引n的前面；返回值是[];
+    splice(n,m,x)替换：从索引n开始，删除m个，替换为x的新内容；被删除的内容，以一个新数组的形式返回；
+2）查找和克隆
+slice(n,m) 从索引n开始截取到m；不包含m；
+[n-m]: slice(n-1,m);
+concat:数组拼接
+    克隆的方法：
+    1）ary.concat()
+    2)slice(0)/slice();
+    以上两个不会对原数组造成影响；
+    3)splice(0);//会对原数组造成影响
+3）数组转字符串 2
+    toString() 把数组转成以","拼接的字符串
+    join('拼接形式') 可以配合eval() 实现计算；
+    eval() 把字符串做为JS代码来执行；
+4)排列和排序
+    reverse() 数组翻转
+    sort(function(a,b){
+        return a-b 从小到大排
+    })
+5）常用但不兼容的方法
+    indexOf()
+    forEach()
+    map()
+2.删除数组最后一项
+pop() ary.length--; ary.length-=1; ary.length=ary.length-1; ary.splice(ary.length-1,1);
+3.给数组末尾添加一项
+push(); ary.splice(ary.length,0,''); ary[ary.length]='';
+....................................................................
+1.节点
+            nodeType      nodeName    nodeValue
+文本节点        3           #text        文本内容
+注释节点        8           #comment     注释内容
+元素节点        1           大写的标签名   null
+document       9           #document    null
+
+2.节点关系
+parentNode 父节点；结构上的父级；
+childNodes 兼容所有浏览器，拿到的当前元素下所有的子节点
+children
+previousSibling 上一个哥哥节点  previousElementSibling 上一个哥哥元素节点，但是不兼容
+nextSiling 下一个弟弟节点 nextElementSibling 下一个弟弟元素节点，但是，不兼容
+firstChild 第一个子节点
+lastChild  最后一个子节点
+//问题：
+1）想获取到所有的子元素,可以不兼容 children
+2）想获取所有的子节点 childNodes
+3) 想获取上一个哥哥元素节点，可以不兼容 previousElementSilbing
+3.关于元素的动态操作
+1）元素的动态创建
+document.createElement('标签名')；
+obj.cloneNode(布尔值) true:深度克隆  false：只克隆表面，不克隆元素的内容
+2）元素的动态插入 2个
+    1.插入到一个容器的末尾
+    //把当前元素插入到父容器的末尾；
+    parent.appendChild(curEle);
+    2.把新元素插入到指定元素的前面；
+    parent.insertBefore(curEle，oldEle);
+3）元素的删除和替换
+    删除：parent.removeChild(要移除的元素);
+    替换：parent.replaceChild(curEle,oldEle);
+4.attribute系列：
+    obj.getAttribute(属性名) 获取元素身上的某个属性
+    obj.setAttribute(属性名) 设置元素的自定义属性；
+    obj.removeAttribute(属性名)  移除元素身上的某个属性；
+关于.和attribute的区别：
+1）如果已经在标签上设置了自定义属性，通过"."不能获取到；通过getAttribute可以获取到自定义属性
+2）通过"."设置的自定义属性；在标签上看不到；但是通过setAttribute设置的自定义属性，可以看到
+注意事项："."和attribute不能混合操作；
+小总结：操作元素属性的方法有3个：
+.   []   attribute系列
+4.封装getChildren思路：
+getChildren功能：获取当前元素所有的子元素
+参数：当前元素curEle;
+返回值：获取的所有元素 ary;
+核心思想：
+    1）先获取当前元素所有的子节点
+    2）判断每个节点.nodeType===1;如果符合这个条件，把这个元素放入ary数组中；
+function getChildren(curEle){
+    var ary=[];
+    var aLis=curEle.childNodes;
+    for(var i=0; i<aLis.length; i++){
+        var cur=aLis[i];
+        if(cur.nodeType===1){
+            ary.push(cur)
+        }
+    }
+    return ary;
+}
+5.封装prev的思路
+prev:功能 获取当前元素的上一个哥哥元素节点
+参数：当前元素 curEle;
+返回值：找到的上一个哥哥元素 || null；
+核心思路：
+    先判断浏览器对previousElementSibling的支持情况；支持的话，直接用，不支持，自己再做兼容处理；
+    1. 先获取上一个哥哥节点（元素节点，文本节点，注释节点，document节点）
+    2.当上个哥哥节点存在，并且，上一个哥哥节点不是元素节点的时候；会依据哥哥节点继续往上找；我们不知道要找多少次才能找到哥哥元素节点，所以用while循环；
+function prev(curEle){
+    if(curEle.previousElementSibling){
+        return curEle.previousElementSibling;
+    }
+    var pre=curEle.previousSibling;
+    while(pre && pre.nodeType !== 1){
+        pre=pre.previousSibling;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

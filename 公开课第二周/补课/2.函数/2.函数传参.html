@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*var obj={
+        name:'zhufeng',
+        age:8
+    };
+    function fn(n){//n:函数在定义阶段，里面的参数属于形参；
+        //alert(n)
+        //console.log(n.name)
+        n();//undefined();
+    }
+    function aa(){
+        alert(456)
+    }
+    fn(aa)//当把函数表达式做为值传给另一个函数的参数的时候，就叫做回调函数；*/
+    //为什么要进行封装：对于相同的功能；只需要封装1次，以后需要的时候，直接调用即可；
+    /*function add(a,b,c,d){
+        alert(a+b+c+d);
+    }
+    add(1,2);*/
+    //当不确定有多少个参数的时候，不需要写形参；
+    //add功能：任意个参数的求和；
+    function add(){
+        var total=0;
+        //函数自带的参数机制：arguments；arguments是一个类数组；
+        for(var i=0; i<arguments.length; i++){
+            if(!isNaN(arguments[i])){//过滤有效数字；
+                total+=Number(arguments[i]);//防止字符串拼接
+            }
+        }
+        return total;
+    }
+   console.log(add(1,2,'3','3px','zhufeng',7))
+
+</script>
+</body>
+</html>

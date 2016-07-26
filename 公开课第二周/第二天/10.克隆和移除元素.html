@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .div2{
+            width: 300px;
+            height: 300px;
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <p>p1</p>
+    <p>p2</p>
+    <span>span</span>
+</div>
+<script>
+    var oDiv=document.getElementById('div');
+    //我想克隆一份跟oDiv一模一样的
+    var oDiv2=oDiv.cloneNode();//true：深度克隆 false：只克隆表面，不包含元素的内容；
+    //oDiv2.id=null; 类似于假删除
+    oDiv2.removeAttribute('id');//移除了oDiv2的id属性；
+    oDiv2.className='div2';//给oDiv2加上样式；
+    document.body.appendChild(oDiv2);
+    //点击oDiv的时候，移除oDiv2;
+    oDiv.onclick=function(){
+        //需求1：移除的时候，一定要在oDiv2的父级下面去移除
+        //document.body.removeChild(oDiv2);
+        //需求2：当点击oDiv的时候，让oDiv2替换oDiv;
+        document.body.replaceChild(oDiv2,this);
+        //this：当元素的事件被触发的时候，执行一个方法，方法中的this指向当前这个元素；
+    }
+</script>
+</body>
+</html>

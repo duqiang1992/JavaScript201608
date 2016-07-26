@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>0</li>
+    <li class="li1">1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    //prev功能:找当前元素的上一个哥哥元素节点；
+    /*
+    * 参数：curEle 当前元素
+    * 返回值：找到的哥哥元素节点or null；
+    * 核心思路：
+    *   //如果浏览器支持previousElementSibling->就用系统提供的方法，否则：自己做以下兼容处理；
+    *   1）先找到上一个节点
+    *   2）根据上一个节点继续往上找
+    *       条件：上一个节点存在，并且，上一个节点不是元素节点
+    *       因为不知道要找多少次，才能找到元素节点，所以，只能用while循环；
+    * */
+    console.log(prev(aLi[2]));
+    function prev(curEle){
+        if(curEle.previousElementSibling){
+            return curEle.previousElementSibling;
+            //return 有两个作用：1.返回值 2.阻断程序执行的作用；
+        }
+        var prev=curEle.previousSibling;//找到的上一个节点
+        //上一个节点存在，并且不是元素节点；我们就依据上一个节点继续往上找；
+        while(prev && prev.nodeType !== 1){
+            prev=prev.previousSibling;
+        }
+        return prev;
+    }
+</script>
+</body>
+</html>

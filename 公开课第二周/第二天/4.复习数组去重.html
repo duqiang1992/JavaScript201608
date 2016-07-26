@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,32,32,4,5,61,61,21,4,5,61];
+    //1.sort进行排序 2.拿当前项跟后一项进行比较
+    /*ary.sort(function(a,b){
+        return a-b;
+    });
+    for(var i=0; i<ary.length; i++){
+        if(ary[i]===ary[i+1]){
+            ary.splice(i,1);
+            i--;
+        }
+    }*/
+    //2.双循环
+    /*for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        //那当前这一项跟后面每一项进行比较，如果重复，就删除；
+        for(var j=i+1;j<ary.length; j++){
+            if(cur === ary[j]){
+                ary.splice(j,1);
+                j--;
+            }
+        }
+    }*/
+    //3.新数组
+    /*var newAry=[];
+    for(var i=0; i<ary.length; i++){
+        if(newAry.indexOf(ary[i])===-1){
+            newAry[newAry.length]=ary[i];
+        }
+    }
+    console.log(newAry)*/
+    //4.如果对象中没有这一项，给对象添加属性和方法，如果对象中已经有了，说明是重复的，直接在数组中删除这一项；
+    /*var obj={};
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        if(obj[cur]===cur){//说明重复了
+            ary.splice(i,1);
+            i--;
+        }
+        obj[cur]=cur;
+    }
+    console.log(ary);*/
+    //5.利用对象不重名的特性；
+    var obj={};
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        //统计每个数字出现的次数；
+        if(obj[cur]){
+            obj[cur]++;
+        }else{
+            obj[cur]=1;//如果给0；走if语句的时候；0是假，进不去if语句
+        }
+
+    }
+    console.log(obj);
+
+
+
+
+
+
+</script>
+</body>
+</html>

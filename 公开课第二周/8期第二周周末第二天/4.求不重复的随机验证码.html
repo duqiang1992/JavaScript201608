@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+
+        }
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    //因为字符串的长度是1-62；他对应的索引是0-61
+    var oDiv=document.getElementById('div1');
+    var strRan='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    function code(){
+        var str='';
+        while(str.length<4){//停止条件:字符串的长度小于4；
+            //求n到m的随机数 Math.random()*(m-n)+n;
+            var rnd=Math.round(Math.random()*61);
+            //判断字符串中没有重复的，才添加； 字符串通过索引找对应的内容str.charAt(索引) =》 找到对应的内容
+            if(str.indexOf(strRan.charAt(rnd))===-1){
+                str+=strRan.charAt(rnd);
+            }
+        }
+        oDiv.innerHTML=str;
+    }
+    /*code();
+    document.body.onclick=code;*/
+    var timer=setInterval(code,1000)
+</script>
+</body>
+</html>

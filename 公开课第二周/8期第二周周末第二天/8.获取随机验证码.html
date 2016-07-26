@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var strRan='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    //思路1：用for循环
+    /*var ary=[];//数组起的就是去重的作用；
+    var str='';
+    for(var i=0; i<4; i++){
+        var rnd=Math.round(Math.random()*61);
+        if(ary.indexOf(rnd)!==-1){//重复了
+            i--;
+        }else{
+            ary.push(rnd);//数组中放的是不重复的数字；
+            str+=strRan.charAt(rnd);//字符串中放的是不重复的验证码；
+        }
+    }*/
+    //思路2：用while循环
+    var ary=[];
+    var str='';
+    //只要数组的长度<4；每次都判断数组中是否存在这一项，如果不存在，才给数组中添加；
+    while(ary.length<4){
+        var rnd=Math.round(Math.random()*61);
+        if(ary.indexOf(rnd)===-1){
+            ary.push(rnd);
+            str+=strRan.charAt(rnd);
+        }
+
+    }
+    document.write(str)
+</script>
+</body>
+</html>

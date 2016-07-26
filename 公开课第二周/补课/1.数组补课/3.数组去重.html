@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //以下方法：考试，写出两个即可；
+    var ary=[1,2,3,1,2,3,4,2,1,2,3,4];
+    //ary.sort只能0-10以下的；如果多位，必须传function(){};
+    //思路1：1）sort排序 2）当前项跟后一项进行比较
+    /*ary.sort(function(a,b){
+        return a-b;
+    })
+    for(var i=0; i<ary.length; i++){
+        if(ary[i]===ary[i+1]){
+            ary.splice(i,1);
+            i--; //为了防止数组塌陷；
+        }
+    }
+    console.log(ary);*/
+    //思路2：双重循环；
+    /*for(var i=0; i<ary.length; i++){
+        for(j=i+1; j<ary.length; j++){
+            if(ary[i]===ary[j]){
+                ary.splice(j,1);
+                j--;
+            }
+        }
+    }*/
+    //思路3：建立一个新数组；
+    /*var newAry=[];
+    for(var i=0; i<ary.length; i++){
+    //数组中如果没有，添加；注意，打印时打印的是新数组
+        if(newAry.indexOf(ary[i])===-1){
+            newAry.push(ary[i]);
+        }
+    }*/
+    //思路4：如果对象中已经存在，删除数组这一项
+    /*var obj={};
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        //防止对象的属性名重复
+        if(obj[cur]===cur){
+            ary.splice(i,1);
+            i--;
+        }
+        obj[cur]=cur;
+    }*/
+    //思路5：利用对象不重名的特性；
+    /*var obj={};
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        if(obj[cur]){//记录每个数字出现的次数；
+            obj[cur]++;
+            continue;//本次不走，以后继续；
+        }
+        obj[cur]=1;
+
+    }*/
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

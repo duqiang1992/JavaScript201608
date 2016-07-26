@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,32,2,9,4];
+    function quickSort(ary){
+        if(ary.length<=1){
+            return ary;
+        }
+        //1.取中间位置
+        var num=Math.floor(ary.length/2);
+        var numValue=ary.splice(num,1)[0];
+        var left=[];
+        var right=[];
+        //2.拿数组中的每一项跟numValue进行比较，比他大放右边，比他小放左边
+        for(var i=0; i<ary.length; i++){
+            var cur=ary[i];
+            if(cur<numValue){
+                left.push(cur)
+            }else{
+                right.push(cur);
+            }
+        }
+        return quickSort(left).concat([numValue],quickSort(right))
+    }
+    console.log(quickSort(ary))
+</script>
+</body>
+</html>

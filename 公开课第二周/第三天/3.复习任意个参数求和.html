@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+思路：add()
+参数：没有
+返回值：把所有参数求和后的结果
+1）遍历arguments；
+2）判断每个arguments是否为有效数字，如果是有效数字，进行累加；注意累加的时候，预防字符串拼接的问题；
+-->
+<script>
+    function add(){
+        var total=0;
+        //遍历每个arguments，判断每个arguments是否为有效数字
+        for(var i=0; i<arguments.length; i++){
+            if(!isNaN(arguments[i])){
+                total+=Number(arguments[i]);//为了防止字符串拼接；
+            }
+        }
+        return total;//最后把求和后的结果返回；
+    }
+    console.log(add(12,32,9,'3','3px'))
+</script>
+</body>
+</html>

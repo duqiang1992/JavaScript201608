@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            height: 40px;
+            list-style: none;
+        }
+        .bg0{
+            background: lightblue;
+        }
+        .bg1{
+            background: lightcyan;
+        }
+        .bg2{
+            background: lightgoldenrodyellow;
+        }
+        .changeBg{
+            background: darkmagenta;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    var oldBg=null;//现在没有，以后会有；
+    for(var i=0; i<aLi.length; i++){
+        switch (i%3){//用switch时，每个case下，必须写break;
+            case 0:
+                aLi[i].className='bg0';
+                break;
+            case 1:
+                aLi[i].className='bg1';
+                break;
+            default :
+                aLi[i].className='bg2';
+                break;
+        }
+        aLi[i].onmouseover=function(){
+            oldBg=this.className;//把以前的颜色存起来；
+            this.className='changeBg';
+        };
+        aLi[i].onmouseout=function(){
+            this.className=oldBg;
+        };
+        (function(index){
+            aLi[index].onclick=function(){
+                alert(index)
+            }
+        })(i);
+    }
+   /* var i=0;//用while循环代替for循环时；必须写定义阶段
+    while(i<aLi.length){
+        if(i%3===0){
+            aLi[i].className='bg0';
+        }else if(i%3===1){
+            aLi[i].className='bg1';
+        }else{
+            aLi[i].className='bg2';
+        }
+        i++;//自增必须得写，否则死循环；
+    }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            font-size: 50px;
+        }
+        div span{
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div>距离下课还有 <span>00天00:00:00</span></div>
+<script>
+    var oSpan=document.getElementsByTagName('span')[0];
+    function toDou(n){
+        return n>=0 && n<10?'0'+n:''+n;
+    }
+    function getDate() {
+        /*//1.获取日期对象
+        var oDate = new Date();
+        oDate.getTime() //getTime()现在距离1970年1月1日  00:00:00的毫秒数； 格林尼治时间
+        new Date('2016/7/21 18:00:00').getTime()//未来时间距离1970年1月1日 00:00:00的毫秒数
+        //求 未来时间距离现在的毫秒数
+        new Date('2016/7/21 18:00:00').getTime() - oDate.getTime()*/
+        //1.获取日期对象
+        var oDate=new Date();
+        var oldTime=oDate.getTime();//现在距离1970年的毫秒数
+        var newDate=new Date('2016/7/21 18:00:00');
+        var newTime=newDate.getTime();//未来时间距离1970年的毫秒数
+        var s=Math.floor((newTime-oldTime)/1000);//未来时间距离现在的秒数
+        //求出一天有多少秒 24*60*60=86400；
+        var d =Math.floor(s/86400);//整数部分代表的是天；
+        s=s%86400;//余数代表 剩下的秒数；
+        var h =Math.floor(s/3600);//整数部分代表小时；
+        s%=3600; //余数代表 剩下的秒数；
+        var m =Math.floor(s/60);
+        s%=60;
+        var str=toDou(d)+'天'+toDou(h)+':'+toDou(m)+':'+toDou(s);
+        oSpan.innerHTML=str;
+    }
+    getDate();
+    setInterval(getDate,1000);
+</script>
+</body>
+</html>

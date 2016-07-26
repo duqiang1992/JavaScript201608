@@ -1,0 +1,70 @@
+复习数组常用方法：
+1 增加，删除和替换
+    pop()
+    push()
+    unshift()
+    shift()
+    splice()
+        splice(n,m) 删除
+        splice(n,0,x) 添加
+        splice(n,m,x) 替换
+2 查找和克隆
+   slice(n,m) 从索引n开始到索引m,不包含m；
+   concat（） 数组拼接
+   克隆：
+   1）slice(0)/slice()
+   2)concat();
+   3)splice(0)
+3.数组转字符
+    toString()
+    join('拼接形式') 配合eval实现计算
+    eval() 把字符串做为JS代码来执行
+4.排序和排列
+    reverse() 数组翻转
+    sort(function(a,b){
+        return a-b;
+    })
+5.常用但不兼容的方法
+    indexOf()
+    forEach()
+    map();
+
+1. 通过索引找字符
+    charAt()
+    charCodeAt()
+2. 通过字符找索引
+    indexOf()
+    lastIndexOf()
+3. 字符串查找
+    substr(n,m) 从索引n开始，找m个；
+    substring(n,m) 从索引n开始，找到索引m； 不包含m;
+    slice(n,m) 功能跟substring一样，但可以取负值
+4. 字符串转大小写
+    toUpperCase()
+    toLowerCase()
+5. 跟正则配合的字符串方法
+    split() 把字符串切成数组
+    replace('','') 字符串替换
+    match('') 字符串捕获，从大字符串中找小字符串
+    search('') 找到返回对应内容的索引，找不到返回-1；
+
+。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+1.字符串常用方法：
+1)根据索引找对应字符： 2个
+    charAt(索引) 通过索引找对应字符
+    charCodeAt(索引) 通过索引找对应字符的ASCII值；
+2）根据字符找对应索引 2个
+    indexOf(字符串) 从前往后找：通过字符找对应索引； 找不到返回-1;
+    lastIndexOf(字符串) 从后往前找： 通过字符找对应索引； 找不到返回-1;
+3）查找字符串 3个
+    substr(n,m) 从索引n开始，查找m个；
+    substring(n,m) 从索引n开始，找到索引m，但不包含m；
+    slice(n,m) 他的功能跟substring一样；但是他可以取负值；
+4)字符串转大小写2个
+    toUpperCase() 转大写
+    toLowerCase() 转小写
+5）可以跟正则配合的字符串方法 4个
+    1.split(‘切割形式’)字符串转数组
+    2.replace('内容','') 字符串替换
+    3.match(‘’) 捕获的功能；
+    4.search() 匹配的功能：通过字符找对应内容的索引； 找不到返回-1;

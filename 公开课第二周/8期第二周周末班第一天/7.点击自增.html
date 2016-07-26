@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+        #box{
+            width: 200px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="点击我吧"/>
+    <div id="num">0</div>
+</div>
+<script>
+    var oBtn=document.getElementsByTagName('input')[0];
+    var oDiv=document.getElementById('num');
+    var bOk=true;
+    var timer=null;
+    var num=0;
+    oBtn.onclick=function(){
+        //当点击按钮的时候，如果bOk为true，开启一个定时器，不断累加num,并把累加的值，放到oDiv.innerHTML;让bOk=false;
+        if(bOk){
+            timer=setInterval(function(){
+                num++;
+                oDiv.innerHTML=num;
+            },500)
+        }else{
+            clearInterval(timer);
+        }
+        bOk=!bOk;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,8,4,32,5];
+    /*
+    * 1.left=[4，5，8，21,32]
+    * 2.拿数组中的每一项，跟左手中的每一项，从后往前的进行比较：
+    *   1）如果比左手中的牌大，应该放在左手这张牌的后面（放在这张牌的下一张牌的前面）
+    *   2）如果比左手中的牌小，,继续往左边比较，比较到索引===-1；还是小的话，插入到left最前面；
+    *  return  left;
+    * */
+    console.log(insertSort(ary));
+    function insertSort(ary){
+        //1.先给左手一张牌，这个牌数组中
+        var left=ary.splice(0,1);
+        //2.拿数组中的每一项跟左手中的每一项进行比较（从后往前的比较）
+        for(var i=0; i<ary.length; i++){//数组
+            var cur=ary[i];//数组中的每一项；
+            for(var j=left.length-1; j>=0;){//4  左手
+                var nex=left[j];//代表左手中的每一项；
+                if(cur<nex){//数组中的某一项，比左手牌小；
+                    j--;
+                    if(j===-1){//说明已经比到左手第一张牌了，而且还比他小,应该插入左手第一张牌的最前面；
+                        left.unshift(cur);
+                    }
+                }else{
+                    left.splice(j+1,0,cur);
+                    break;
+                }
+            }
+        }
+        return left;
+    }
+</script>
+</body>
+</html>

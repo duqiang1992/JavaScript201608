@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //toDou:实现两位数
+    function toDou(n){
+        /*if(n>=0 && n<10){
+            return '0'+n;
+        }else{
+            return ''+n;
+        }*/
+        return n>=0 && n<10? '0'+n:''+n;
+    }
+    function getDate(){
+        var oDate=new Date();//获取日期对象
+        var y=oDate.getFullYear();//获取年份
+        var m=oDate.getMonth()+1;//获取月份的时候，必须+1；
+        var d=oDate.getDate();//获取日
+        var w=oDate.getDay();//获取星期 0123456   0：代表星期日；
+        var h=oDate.getHours();//获取小时
+        var min=oDate.getMinutes();//获取分钟
+        var s=oDate.getSeconds();//获取秒
+        var str=toDou(h)+':'+toDou(min)+':'+toDou(s)//字符串拼接
+        document.body.innerHTML=str;
+    }
+    getDate();//这里手动调用一次，是为了防止1秒后才执行，页面出现空白的情况
+    var timer=setInterval(getDate,1000)//每 隔一秒获取一次最新的日期对象；
+</script>
+</body>
+</html>

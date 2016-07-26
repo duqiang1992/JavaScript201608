@@ -1,0 +1,124 @@
+1.JS的输出方法
+1）alert（）
+2）confirm() 他有两个返回值：确定按钮-true； 取消按钮-false;
+3）document.write() 注意：在window.onload里使用document.write会清空页面；
+4）innerHTML
+5)console.log()
+6)console.dir();//可以打印出对象的详细信息；
+7)console.table();
+2.关于元素的获取
+tagName:获取到的是一组元素；
+3.元素节点，对象，元素，标签都是一个东西；
+4.属性和方法的区别：
+属性没括号，方法有括号；()
+5.数据类型检测：
+typeof 局限性：不能对象的详细情况
+constructor 构造函数
+instanceof 返回的结果是个布尔值； ary instanceof Array;
+Object.prototype.toString.call()  //[object Array];
+6.JS下面的类：String Number Array Object Date RegExp......
+7.isNaN() 是否为非有效数组： 是非有效数字-true； 不是非有效数字-false；
+8.其他数据类型转为number数据类型
+1）转换方式：
+严格转换:Number()
+非严格转换：parseInt(); parseFloat();
+2)转换规律：
+    1.true->1; false->0;
+    2.null->0; undefined->NaN;
+    3.[] 首先会通过tostring转为"",然后通过Number转成0；
+3）isNaN();是否为非有效数字
+9.
+1）什么是真？什么是假？
+规律：除了0,"",null,undefined,NaN为假，其他都为真
+2）其他数据类型转为布尔数据类型的方式
+    1.Boolean();
+    2.!
+    3.!!
+    4.if(值)
+    5.if(表达式)
+10.数字常用的方法:toFixed(保留的小数的个数)
+11.关于循环
+for和while的区别和联系
+1）相同点，都可以包含四部：定义，条件，语句，自增
+2）不同点：用法不同
+for循环用于长度固定的循环；
+while循环，用于长度不固定；即，当不知道要循环多少次的时候，用while循环；
+3）do...while循环，无论条件是否成立，都会先执行一次，以后再根据条件判断，决定是否再执行
+4）for ...in 关于对象的循环；
+12.数据类型的比较
+1.对象==对象 比较的是地址；[]==[]; ->false
+2.对象==字符串 转成字符串  ''==[];->true
+3.对象==数字  转成数字   []==0; ->true
+4.对象==布尔值 转成数字  []==![] ->true;
+5.字符串==数字 转成数字  ''==0 ->true;
+6.字符串==布尔  转成数字  ''==![] ->true;
+7.数字==布尔   转成数字  0==[] ->true;
+8.null==undefined ->true
+null===undefined ->false;
+9.NaN==NaN ->false
+以上都是复习；
+.................................................................
+1.Math 9个
+    1.Math.round() 四舍五入
+    2.Math.floor() 向下取整
+    3.Math.ceil 向上取整
+    4.Math.abs() 取绝对值
+    5.Math.pow() 幂
+    6.Math.sqrt() 开平方
+    7.Math.max() 求最大值
+    8.Math.min() 求最小值
+    9.Math.random() 0-1之间的随机小数
+    //求n-m之间的随机整数，包含n和m; Math.round(Math.random()*(m-n)+n);
+    //备注，一定要写会0-61之间不重复的随机整数： for循环， while循环
+2.
+ pop 删除数组最后一项
+ push 添加数组最后一项
+ unshift 添加数组第一项
+ shift 删除数组第一项
+ splice 有三种用法
+    splice(n,m)  删除： 从索引n开始，删除m个
+        返回值：被删除的内容以一个新数组的形式返回；
+    splice(n,0,x) 添加： 从索引n开始，删除0个，把x的新内容添加到索引n的前面；
+        返回值：一个空数组
+    splice(n,m,x) 替换： 从索引n开始，删除m个，替换为x的新内容；
+        返回值：被删除的内容以一个新数组的形式返回；
+ indexOf() :查找数组中的内容，如果找到，返回对应内容的索引；找不到，返回-1；
+3.获取元素的方式
+1）id
+2)tagName
+3)className
+4)name--主要用于表单元素的获取
+5）document.documentElement
+document.body
+//可视区的宽
+document.documentElement.clientWidth||document.body.clientWidth;
+document.documentElement.clientHeight||document.body.clientHeight;
+//以下两个主要用于移动端
+6)querySelector 获取到的是一个元素 #div .div;
+7)querySelectorAll 获取的是一组元素
+4.//如何通过JS，然一个div居中显示？
+5.快速排序
+1）先找到中间位置
+2）通过中间位置，获取中间值
+3）拿数组中的每一项跟中间值进行比较，比他大放右边数组，比他小，放左边数组
+4）return quickSort(left).concat([numValue],quickSort(right));
+注意：一定要写上什么情况，停止拆分；当数组.length<=1;直接返回数组
+6.插入排序
+1）先给左手存一张牌（此牌放在数组中）
+2）拿数组中的每张牌跟左手数组中的每张牌进行比较（从后往前的比较）：
+    1.如果比左手大，放在左手下张牌的前面
+    2.如果比左手小，继续往左比较，一直比较到左手的第一张，还小的话，直接插入left数组的最开始；
+
+
+
+
+
+
+
+
+
+
+
+
+
+

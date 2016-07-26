@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 50px;
+        }
+       #box{
+           width: 100px;
+           margin: 50px auto;
+       }
+        #div1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div  id='link'>按钮</div>
+    <div  id='div1'>0</div>
+</div>
+<script>
+    var oLink=document.getElementById('link');
+    var oDiv=document.getElementById('div1');
+    var count=0;
+    var timer=null;//现在没有，以后会有；
+    var bOk=true;
+    //点击按钮的时候，让count每隔500ms自增一次；并把自增后的结果，赋值给oDiv的内容；
+    //点击一次自增，再点击一次停止；再点击一次继续自增，再点击一次停止。。。。
+    oLink.onclick=function(){
+        //条件判断语句中，不建议写函数定义阶段；因为这样容易出错；
+        if(bOk){//为真，自增
+            fn();
+            //timer=setInterval(fn,500);
+            bOk=false;
+        }else{//为假，停止自增；
+            clearTimeout(timer);
+            bOk=true;
+        }
+        function fn(){
+            count++;
+            oDiv.innerHTML=count;
+            timer=setTimeout(fn,500);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script>
+    /*var obj={name:'123',age:456,fn:function(){
+        alert(123)
+    }};
+    //属性没括号，方法有括号；
+    obj.name //属性
+    obj.fn() //方法；*/
+    var oDiv=document.getElementById('div');
+    //构造函数，通过new出来的是个实例；
+    function getDate(){
+        var oDate=new Date();
+        // console.dir(oDate)//打印日期对象，可以拿到自己电脑现在的时间；
+        var y=oDate.getFullYear();//年
+        var m=oDate.getMonth()+1;//获取月份的时候一定要+1；
+        var d=oDate.getDate();
+        var w=oDate.getDay(); //0：代表周日 1-6正常
+        var h=oDate.getHours();
+        var min=oDate.getMinutes();
+        var s=oDate.getSeconds();
+        var str=h+':'+min+':'+s;
+        oDiv.innerHTML=str;
+        var timer=setTimeout(getDate,1000);//递归思想：函数自己调用自己；
+    }
+    getDate();
+    //var timer=setInterval(getDate,1000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<script>
+    //需求：点击每个按钮，弹出对应的索引；
+    //思想1：自定义属性
+    var aBtn=document.getElementsByTagName('input');
+    //想给每个元素都绑定点击事件
+    /*for(var i=0; i<aBtn.length; i++){
+       // alert(i) 都是正确的i值；
+        aBtn[i].index=i;//把每个正确的i值都保存到自定义属性上；
+        aBtn[i].onclick=function(){
+            //事件中触发的函数中的i值，一定有问题；
+            alert(this.index)
+        }
+    }*/
+    //思想2：闭包
+    for(var i=0; i<aBtn.length; i++){
+        //想保存正确的i值；
+        (function(index){//把正确的i值都保存在元素的私有属性index;
+            aBtn[index].onclick=function(){
+                alert(index);
+            }
+        })(i);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //rnd功能：求[n-m]之间的随机整数 '3' '19px'
+    function rnd(n,m){
+        n=Number(n);//首先把n转成数字
+        m=Number(m);//把m转成数字
+        //先判断参数传错的情况
+        if(isNaN(n) || isNaN(m)){
+            return Math.random(); //如果用户调用rnd，拿到的是0-1之间的随机小数，说明他传参传错了；
+        }
+        if(n>m){//判断n>m的情况
+            var tmp=m;
+            m=n;
+            n=tmp;
+        }
+        return Math.round(Math.random()*(m-n)+n);
+
+    }
+    var strCode='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var str='';
+    //var ary=[];
+    /*for(var i=0; i<4; i++){
+        var rnd=Math.round(Math.random()*61);
+        if(ary.indexOf(rnd) !== -1){//重复
+            i--;
+        }else{
+            ary.push(rnd);//用数组解决索引这个数字的重复问题
+            str+=strCode.charAt(rnd);//通过不重复的数字，把它作为索引找到字符串对应的内容；
+        }
+    }*/
+    /*while(ary.length<4){
+        var rnd=Math.round(Math.random()*61);
+        if(ary.indexOf(rnd)===-1){
+            ary.push(rnd);
+            str+=strCode.charAt(rnd);
+        }
+    }*/
+    //判断只要str.length<4; 一样取随机整数，判断如果字符串中没有 rnd对应的字符；才给字符串添加这个字符；
+    while(str.length<4){
+        var rnd=rnd(0,61);
+        //当字符串不存在rnd对应的字符；才给字符串添加这个字符；
+        if(str.indexOf(strCode.charAt(rnd)) === -1){
+            str+=strCode.charAt(rnd);
+        }
+    }
+    document.write(str)
+</script>
+</body>
+</html>

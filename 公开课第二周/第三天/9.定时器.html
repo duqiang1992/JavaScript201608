@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //setInterval有两个参数：1）回调函数 2）毫秒数
+    //setInterval：每隔一段时间走一次；只要不关闭页面或关闭定时器，他会一直走下去；
+    //手动关闭：clearInterval()
+    var n=0;
+    /*var timer=setInterval(function(){
+        n++;
+        alert(n)
+        if(n==5){
+            clearInterval(timer);//关闭定时器，必须关闭有名字的定时器；
+        }
+    },1000)*/
+    //setTimeout：一段时间后只走一次；
+    // clearTimeout(定时器的名字)
+    var timer=setTimeout(function(){
+        alert(n);
+    },1000)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[21,8,4,32,5];
+    //需求：从小到大的排序
+    /*
+    * 1)先从这个数组中取出中间一项的位置；var num=Math.floor(ary.length/2)
+    * 2)取到这个中间位置对应的值；
+    * var numValue=ary[num];
+    * var numValue=ary.splice(num,1)[0]; center;
+    * 3)拿数组中的每一项，跟中间值进行比较；如果比他小，放左边的数组； 如果比他大，就放右边的数组；
+    * center [4]
+    * var left=[]; var right=[];
+    * left:[] ; right[21,8,32,5];->left.concat(center,right) [4,21,8,32,5]
+    * center[8]
+    * left[4,5] right[21,32] =>[4,5,8,21,32];
+    * 4)什么时候停止切分： 数组的长度<=1;
+    * */
+
+    function quickSort(ary){
+        //1.判断是否符合切割条件，如果不符合，直接返回；
+        if(ary.length<=1){
+            return ary;
+        }
+        //2.符合切割条件
+        //1）取中间位置；
+        var num=Math.floor(ary.length/2);
+        //2）取中间值并且要对原数组造成影响
+        var numValue=ary.splice(num,1)[0];//这里是一个数字
+        //3）拿数组中的每一项跟中间值numValue进行比较，比他小，放left数组，反之，放right数组；
+        var left=[];
+        var right=[];
+        for(var i=0; i<ary.length; i++){
+            var cur=ary[i];
+            if(cur<numValue){
+                left.push(cur);
+            }else{
+                right.push(cur);
+            }
+        }
+        return quickSort(left).concat([numValue],quickSort(right));
+    }
+    console.log(quickSort(ary))
+</script>
+</body>
+</html>
+
+
+
+
+
+

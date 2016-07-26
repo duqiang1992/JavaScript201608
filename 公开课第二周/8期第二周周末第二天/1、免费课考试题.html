@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*var ary=[];
+    //var str='123';//字面量的方式
+    var str=new String('123')//实例创建
+    var num=new Number();//实例创建
+    //console.log(str.constructor)
+    //alert(num instanceof Number)
+    console.log(Object.prototype.toString.call(num))*/
+    var ary=[12,54,34,28];
+    //item：数组中的每一项内容
+    //index：索引
+    //input:原数组
+    //forEach没有返回值；而map有返回值
+    //我们可以通过匿名函数的三个参数，把原数组进行改变；
+   /* var res=ary.forEach(function(item,index,input){
+        //console.log(item)
+        input[index]=item*100;
+        return 123;
+    })
+    console.log(res)
+    console.log(ary)*/
+    var res=ary.map(function(item,index,input){
+        input[index]=item*200;
+       // return item;//返回值是你想返回什么就返回什么；
+    })
+    console.log(res)
+
+
+    /*var num=0;
+    function fn(n){
+         n && n(2,3);
+        /!*num++;
+        if(num===5){
+            n();
+        }*!/
+       /!*!// n && n();//当n为真or存在的时候，才会调用n这个方法；
+        n || '123';//当n为真，不会走后面语句，当n为假，才会走后面语句*!/
+    }
+    function aa(a,b){
+        console.log(b)
+        alert(1);
+    }
+    fn(aa); //当函数表达式做为参数传给另一个函数的时候，就是回调函数；回调函数不知道在哪里被调用；*/
+</script>
+</body>
+</html>

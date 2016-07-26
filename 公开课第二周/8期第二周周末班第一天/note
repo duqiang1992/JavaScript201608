@@ -1,0 +1,179 @@
+1.字符串常用方法：
+    1.通过下标找字符
+    charAt()
+    charCodeAt()
+    2.通过字符找下标
+    indexOf()
+    lastIndexOf()
+    3.字符串查找
+    substr(n,m) 从索引n开始，查找m个
+    substring(n,m) 从索引n开始，查找到索引m,不包含m；
+    slice(n,m) 功能跟substring一样，但是可取负值
+    4.字符串转大小写
+    toUpperCase() 转大写
+    toLowerCase() 转小写
+    5.跟正则配合的字符串方法
+  split(切割形式) 把字符串切成数组
+  match('') 捕获，从大字符串捕获小字符串的内容
+  replace('','') 字符串替换
+  search('') 匹配，找到返回索引，找不到返回-1；
+2.数组常用方法：
+    1.增加，删除和替换
+    push()
+    pop()
+    shift()
+    unshift()
+    splice()
+        splice(n,m) 删除
+        splice(n,0,x) 添加
+        splice(n,m,x) 替换
+    2.数组转字符串
+    toString()
+    join('拼接形式') 配合 eval 可以实现运算
+    3.排序和排列
+    reverse()
+    sort(function(a,b){
+        return a-b;//从小到大排
+    })
+    4.查找和克隆
+    slice(n,m) 从索引n开始，找到索引m,不包含m;
+    //需求：找从[n项，m项]  slice(n-1,m);
+    concat() 数组拼接 ary1.concat(ary2,ary3...)
+    如果想实现克隆
+    1)slice()/slice(0)
+    2)splice(0);
+    3)ary.concat();
+    5.常用但不兼容的方法
+    forEach()
+    map()
+    indexOf();
+3.数组小总结：
+1）删除数组最后一项：
+    1.pop();
+    2.ary.length--;
+    3.ary.length-=1; ary.length=ary.length-1;
+    4.ary.splice(ary.length-1,1);
+2)添加数组最后一项
+    1.push('')
+    2.ary[ary.length]='';
+    3.ary.splice(ary.length,0,'');
+3)数组的克隆
+    1.slice()/slice(0);
+    2.splice(0);
+    3.ary.concat();
+4.函数自带的参数机制：arguments;
+5.任意个参数求和；
+6.数据类型包含哪些：
+基本数据类型：number,string,boolean,null,undefined
+引用数据类型：对象数据类型和函数数据类型;
+7.基本数据类型和引用数据类型的区别：
+基本数据类型是对值的操作；
+引用数据类型是对地址的操作；
+8.如何检测数据类型
+typeOf
+instanceOf
+constructor
+Object.prototype.toString.call();
+9.其他数据类型转为number类型
+转换方式：3个
+Number()
+parseInt() parseFloat()
+如何判断是否为非有效数字: isNaN()
+NaN出现的两种情况：
+1）转换失败；
+2）非法运算
+转换规律：
+1）true:1 false :0;
+2)null:0; undefined:NaN;
+3)[] 先通过toString() 转成 "",接着通过Number()转成0；
+
+10.布尔值的转换
+转换规律：除了0，NaN,"",null,undefined这5个为false，其他都为true；
+布尔值的转换方式：
+1）Boolean()
+2)!
+3)!!
+4)if(值)
+5)if(表达式)
+
+
+
+if('3px'*9){ //非法运算：NaN
+    alert(true)
+}else{
+    alert(false)
+}
+
+if('3px'+9){ //字符串拼接； +：1）字符串拼接 2）求和
+    alert(true)
+}else{
+    alert(false)
+}
+11.数据类型的比较：
+1）对象==对象 比较的是地址 []==[] ->false; {}=={} ->false;
+2)对象==字符串 都转成字符串  ""==[] -> true
+3)对象==数字  转成数字  []==0 -> true; ![]==0 ->true;
+4)对象==布尔值 转成数字  []==![] ->true;
+5)字符串==数字  转成数字 ""==2 ->false ; "2" == 2->true; ""==0 ->true;
+6)字符串==布尔值 转成数字  ""==![] ->true;  "1"==true ->true ;""==false->true;
+7)数字==布尔值  转成数字  0==![] ->true;
+8)null===undefined false;  null==undefined true;
+9)NaN==NaN false;NaN跟任何值都不想等，包括他自己也不相等；
+12. var obj={name:'zhufeng',age:8};
+for(var attr in obj){
+    console.log(obj[attr])//打印出每个属性值
+    console.log(attr) //打印出每个属性名
+}
+13.节点类型
+            nodeType       nodeName      nodeValue
+元素节点       1              大写标签名      null
+文本节点       3              #text          文本内容
+注释节点        8              #comment      注释内容
+document节点    9             #document      null；
+14.节点关系
+parentNode
+childNodes
+children
+previousSibling   previousElementSibling
+nextSibling  nextElementSibling
+firstChild
+lastChild
+15.
+function getChildren(curEle){
+    var ary=[];
+    var aLis=curEle.childNodes;
+    for(var i=0; i<aLis.length; i++){
+        if(aLis[i].nodeType===1){
+            ary.push(aLis[i])
+        }
+    }
+    return ary;
+}
+16. function prev(curEle){
+    if(curEle.previousElementSibling){
+        return curEle.previousElementSibling;
+    }
+    var pre=curEle.previousSibling;
+    while(pre && pre.nodeType !== 1){
+        pre=pre.previousSibling;
+    }
+    return pre;
+}
+17.元素的动态操作：
+1）创建新元素
+    document.createElement('标签名')；
+    obj.cloneNode(布尔值)
+2）动态插入
+    parent.appendChild(newEle);
+    parent.insertBefore(newEle,oldEle);
+3)删除和替换
+    parent.removeChild(curEle);
+    parent.replaceChild(newEle,oldEle);
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>12223333<!--珠峰培训-->
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var oUl=document.getElementsByTagName('ul')[0];
+    //var aLis=oUl.childNodes;
+    var aLis=oUl.children;//在IE6-8都不兼容；
+    /*
+    * 1）功能：getChildren：获取当前元素下面所有的子元素
+    * 2）是否传参：curEle; 当前元素
+    * 3）是否有返回值：获取到的所有的他的子元素； 返回值应该是个数组；
+    * 4）实现核心思想：判断每个节点的节点类型===1；如果符合，放到数组中；
+    * */
+    function getChildren(curEle){
+        var ary=[];
+        //1.获取所有的子节点
+        var aLis=curEle.childNodes;
+        for(var i=0; i<aLis.length; i++){
+            var cur=aLis[i];
+            if(cur.nodeType===1){//把所有的元素节点都过滤到数组中；
+                ary[ary.length]=cur;
+            }
+        }
+        return ary;
+    }
+    console.log(getChildren(oUl).length)
+</script>
+</body>
+</html>
